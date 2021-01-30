@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'; 
+import InputData from './InputData'; 
+import ShowData from './ShowData';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {name: '', favoriteAnimal: ''}
+  }
+
+  handleChange = (e) => {
+
+    this.setState({
+      name: e.target.value
+    })
+  }
+
+  handleAnimalChange = (e) => {
+    this.setState({
+      favoriteAnimal: e.target.value
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <label htmlFor='name'>Enter name:</label>
+          <InputData type='text' id='name' value={this.state.name} onChange={this.handleChange} />
+          <label htmlFor='animal'>Favorite Animal</label>
+          <InputData type='text' id='name' value={this.state.favoriteAnimal} onChange={this.handleAnimalChange} />
+        <ShowData name={this.state.name} favoriteAnimal={this.state.favoriteAnimal} />
+      </div>
+    )
+  };
+};
 
 export default App;
