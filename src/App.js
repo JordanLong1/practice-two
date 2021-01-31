@@ -1,7 +1,7 @@
 import React from 'react'; 
 import InputData from './InputData'; 
 import ShowData from './ShowData';
-
+import Label from './Label'
 class App extends React.Component {
 
   constructor(props) {
@@ -25,9 +25,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <label htmlFor='name'>Enter name:</label>
+        <Label htmlFor='name' innerText='Enter name:'/>
           <InputData type='text' id='name' value={this.state.name} onChange={this.handleChange} />
-          <label htmlFor='animal'>Favorite Animal</label>
+          <Label htmlFor='animal' innerText='Enter Animal:'/>
           <InputData type='text' id='name' value={this.state.favoriteAnimal} onChange={this.handleAnimalChange} />
         <ShowData name={this.state.name} favoriteAnimal={this.state.favoriteAnimal} />
       </div>
